@@ -16,7 +16,7 @@ Control a RGB led by using separate potentiometers in controlling each of the co
 ### Implementation details
 Since the values read from each potentiometer are in the interval [0..1023], they need to be mapped to the accepted values by each led which are in the interval [0..255].
 
-### Picture of the setupu
+### Picture of setup
 ![WhatsApp Image 2021-10-23 at 15 29 25](https://user-images.githubusercontent.com/62221313/138556269-8d553af0-0ee4-4f4f-acb8-1238998de5c3.jpeg)
 
 ### Video of the setup
