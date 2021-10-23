@@ -19,8 +19,8 @@ int brightnessGreen = 0;
 int brightnessBlue = 0;
 
 // max values
-int maxPotValue = 1023;
-int maxLedValue = 255;
+const int maxPotValue = 1023;
+const int maxLedValue = 255;
 
 void setup() {
   // led pins are in OUTPUT mode
