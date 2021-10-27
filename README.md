@@ -20,4 +20,4 @@ Since the values read from each potentiometer are in the interval [0..1023], the
 ![WhatsApp Image 2021-10-23 at 15 29 25](https://user-images.githubusercontent.com/62221313/138556269-8d553af0-0ee4-4f4f-acb8-1238998de5c3.jpeg)
 
 ### Video of the setup
-https://youtu.be/HhbP0lSlk_E
+https://youtu.be/SxzImC9lBV8
