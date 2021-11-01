@@ -18,7 +18,7 @@ Each homework's description includes:
  Since the values read from each potentiometer are in the interval [0..1023], they need to be mapped to the accepted values by each led which are in the interval [0..255].
 
  <h3>Picture of setup</h3>
- ![WhatsApp Image 2021-10-23 at 15 29 25](https://user-images.githubusercontent.com/62221313/138556269-8d553af0-0ee4-4f4f-acb8-1238998de5c3.jpeg)
+ <img src="https://user-images.githubusercontent.com/62221313/138556269-8d553af0-0ee4-4f4f-acb8-1238998de5c3.jpeg"/>
 
  <h3>Video of the setup</h3>
  https://youtu.be/SxzImC9lBV8
@@ -39,7 +39,7 @@ Each homework's description includes:
  The button is using the internal PULLUP resistor of the Atmega chip from the Arduino Uno board.
  
  <h3>Picture of setup</h3>
- ![WhatsApp Image 2021-11-01 at 12 30 06](https://user-images.githubusercontent.com/62221313/139659253-b8b25124-ab50-4733-bb05-f3310e908f34.jpeg)
+ <img src="https://user-images.githubusercontent.com/62221313/139659253-b8b25124-ab50-4733-bb05-f3310e908f34.jpeg"/>
 
  <h3>Video of the setup</h3>
  https://youtu.be/e4JgBUx1K0E
