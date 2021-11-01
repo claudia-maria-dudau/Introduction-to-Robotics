@@ -1,10 +1,10 @@
 // led pins
-// cars semaphore
+// car semaphore
 const int ledGreenPin1 = 2;
 const int ledYellowPin1 = 3;
 const int ledRedPin1 = 4;
 
-// pedestrians semaphore
+// pedestrian semaphore
 const int ledGreenPin2 = 5;
 const int ledRedPin2 = 6;
 
@@ -14,7 +14,7 @@ const int pushButton = 7;
 // passive buzzer
 const int buzzerPin = 11;
 
-// led states (green for cars & red for pedestrians)
+// led states (DEFAULT: green for cars & red for pedestrians)
 bool ledRedState1 = LOW;
 bool ledYellowState1 = LOW;
 bool ledGreenState1 = HIGH;
@@ -22,7 +22,7 @@ bool ledGreenState1 = HIGH;
 bool ledRedState2 = HIGH;
 bool ledGreenState2 = LOW;
 
-// button variables
+// button state
 bool buttonState = LOW;
 
 // debounce variables
@@ -36,6 +36,7 @@ bool pedestrianSemaphoreOn = false;
 unsigned int startChange = 0;
 unsigned int elapsedTime = 0;
 
+// system flow intervals
 // all the intervals are relative to the moment of pressing the button
 const int greenToYellowInterval = 10000;
 const int greenToRedCarsInterval = 13000;
@@ -51,9 +52,11 @@ const int intermittenInterval = 500;
 // buzzer variables
 int buzzerTone = 5000;
 int toneDuration = 10;
+unsigned int lastChangedBuzzer = 0;
+
+// sound intervals
 const int buzzerDelayGreen = 1000;
 const int buzzerDelayIntermittenGreen = 500;
-unsigned int lastChangedBuzzer = 0;
 
 void setup() {
   // button pin is in INPUT mode
@@ -73,18 +76,22 @@ void setup() {
 }
 
 void loop() {
-  // writing led values
-  digitalWrite(ledRedPin1, ledRedState1);
-  digitalWrite(ledYellowPin1, ledYellowState1);
-  digitalWrite(ledGreenPin1, ledGreenState1);
-  digitalWrite(ledRedPin2, ledRedState2);
-  digitalWrite(ledGreenPin2, ledGreenState2);
+  writeLedStates();
 
   if (pedestrianSemaphoreOn) {
     pedestrianSemaphore();
   }
 
   readButton();
+}
+
+// writing led states
+void writeLedStates() {
+  digitalWrite(ledRedPin1, ledRedState1);
+  digitalWrite(ledYellowPin1, ledYellowState1);
+  digitalWrite(ledGreenPin1, ledGreenState1);
+  digitalWrite(ledRedPin2, ledRedState2);
+  digitalWrite(ledGreenPin2, ledGreenState2);
 }
 
 // reading the state of the button and seeing if there's a chnage in its state
@@ -94,14 +101,15 @@ void readButton() {
   if (reading != lastReading) {
     lastDebounceTime = millis();
   }
-  Serial.println(reading);
+
   // trying to eliminate the possible noise by waiting a few miliseconds
   // in order to make sure the button was pressed intentionally 
   if (millis() - lastDebounceTime > debounceInterval) {
     if (reading != buttonState) {
       buttonState = reading;
-      // changing semaphore to give priority to pedestrians
+      
       if (buttonState == LOW && !pedestrianSemaphoreOn) {
+        // starting the flow of the system for the pedestrian sempahore
         pedestrianSemaphoreOn = true;
         startChange = millis();
       }
@@ -111,7 +119,7 @@ void readButton() {
   lastReading = reading;
 }
 
-// flow of the cars and pedestrians semaphores once the button is pressed
+// flow of the system's semaphores once the button is pressed
 void pedestrianSemaphore() {
   elapsedTime = millis();
   
@@ -121,7 +129,7 @@ void pedestrianSemaphore() {
     ledRedState1 = LOW;
     ledGreenState1 = HIGH;
 
-    // end of semaphores flow
+    // end of pedestrian semaphore flow
     pedestrianSemaphoreOn = false;
   } else if (elapsedTime - startChange > greenToRedPedestriansInterval) {
     // CARS: red
@@ -136,7 +144,7 @@ void pedestrianSemaphore() {
       lastChangedLed = millis();
     }
 
-    // making the buzzer emit a sound at a given time interval
+    // making the buzzer emit a sound at a given interval (faster this time)
     if (elapsedTime - lastChangedBuzzer > buzzerDelayIntermittenGreen) {
       tone(buzzerPin, buzzerTone, toneDuration);
       lastChangedBuzzer = millis();
@@ -147,7 +155,7 @@ void pedestrianSemaphore() {
     ledRedState2 = LOW;
     ledGreenState2 = HIGH;
 
-    // making the buzzer emit a sound at a given time interval
+    // making the buzzer emit a sound at a given interval
     if (elapsedTime - lastChangedBuzzer > buzzerDelayGreen) {
       tone(buzzerPin, buzzerTone, toneDuration);
       lastChangedBuzzer = millis();
