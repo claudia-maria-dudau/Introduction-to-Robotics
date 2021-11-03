@@ -1,39 +1,36 @@
 // led pins
 // car semaphore
-const int ledGreenPin1 = 2;
-const int ledYellowPin1 = 3;
-const int ledRedPin1 = 4;
+const int carGreenLedPin = 3;
+const int carYellowLedPin = 4;
+const int carRedLedPin = 5;
 
 // pedestrian semaphore
-const int ledGreenPin2 = 5;
-const int ledRedPin2 = 6;
+const int peopleGreenLedPin = 6;
+const int peopleRedLedPin = 7;
 
 // push button 
-const int pushButton = 7;
+const int pushButton = 2;
 
 // passive buzzer
 const int buzzerPin = 11;
 
 // led states (DEFAULT: green for cars & red for pedestrians)
-bool ledRedState1 = LOW;
-bool ledYellowState1 = LOW;
-bool ledGreenState1 = HIGH;
+bool carRedLedState = LOW;
+bool carYellowLedState = LOW;
+bool carGreenLedState = HIGH;
 
-bool ledRedState2 = HIGH;
-bool ledGreenState2 = LOW;
+bool peopleRedLedState = HIGH;
+bool peopleGreenLedState = LOW;
 
 // button state
 bool buttonState = LOW;
 
-// debounce variables
-bool reading = LOW;
-bool lastReading = LOW;
-unsigned int lastDebounceTime = 0;
-const int debounceInterval = 50;
+// debounce interval
+const int debounceInterval = 100;
 
 // changing sempahore variables
-bool pedestrianSemaphoreOn = false;
-unsigned int startChange = 0;
+volatile bool pedestrianSemaphoreOn = false;
+volatile unsigned int startChange = 0;
 unsigned int elapsedTime = 0;
 
 // system flow intervals
@@ -59,15 +56,16 @@ const int buzzerDelayGreen = 1000;
 const int buzzerDelayIntermittenGreen = 500;
 
 void setup() {
-  // button pin is in INPUT mode
+  // button pin is in INPUT mode + accepts interrupts
   pinMode(pushButton, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(pushButton), toggle, FALLING);
   
   // led pins are in OUTPUT mode
-  pinMode(ledRedPin1, OUTPUT);
-  pinMode(ledYellowPin1, OUTPUT);
-  pinMode(ledGreenPin1, OUTPUT);
-  pinMode(ledRedPin2, OUTPUT);
-  pinMode(ledGreenPin2, OUTPUT);
+  pinMode(carRedLedPin, OUTPUT);
+  pinMode(carYellowLedPin, OUTPUT);
+  pinMode(carGreenLedPin, OUTPUT);
+  pinMode(peopleRedLedPin, OUTPUT);
+  pinMode(peopleGreenLedPin, OUTPUT);
 
   // buzzer pin is in OUTPUT mode
   pinMode(buzzerPin, OUTPUT);
@@ -81,42 +79,33 @@ void loop() {
   if (pedestrianSemaphoreOn) {
     pedestrianSemaphore();
   }
-
-  readButton();
 }
 
 // writing led states
 void writeLedStates() {
-  digitalWrite(ledRedPin1, ledRedState1);
-  digitalWrite(ledYellowPin1, ledYellowState1);
-  digitalWrite(ledGreenPin1, ledGreenState1);
-  digitalWrite(ledRedPin2, ledRedState2);
-  digitalWrite(ledGreenPin2, ledGreenState2);
+  digitalWrite(carRedLedPin, carRedLedState);
+  digitalWrite(carYellowLedPin, carYellowLedState);
+  digitalWrite(carGreenLedPin, carGreenLedState);
+  digitalWrite(peopleRedLedPin, peopleRedLedState);
+  digitalWrite(peopleGreenLedPin, peopleGreenLedState);
 }
 
 // reading the state of the button and seeing if there's a chnage in its state
-void readButton() {
-  reading = digitalRead(pushButton);
-
-  if (reading != lastReading) {
-    lastDebounceTime = millis();
-  }
+void toggle() {
+  static unsigned int lastDebounceTime = 0;
 
   // trying to eliminate the possible noise by waiting a few miliseconds
   // in order to make sure the button was pressed intentionally 
   if (millis() - lastDebounceTime > debounceInterval) {
-    if (reading != buttonState) {
-      buttonState = reading;
-      
-      if (buttonState == LOW && !pedestrianSemaphoreOn) {
-        // starting the flow of the system for the pedestrian sempahore
-        pedestrianSemaphoreOn = true;
-        startChange = millis();
-      }
+    // if the system is in the middle of its flow nothing will happen on a button press
+    if (!pedestrianSemaphoreOn) {
+      // starting the flow of the system for the pedestrian sempahore
+      pedestrianSemaphoreOn = true;
+      startChange = millis();
     }
   }
 
-  lastReading = reading;
+  lastDebounceTime = millis();
 }
 
 // flow of the system's semaphores once the button is pressed
@@ -126,21 +115,21 @@ void pedestrianSemaphore() {
   if (elapsedTime - startChange > pedestriansToCarsInterval) {
     // CARS: green
     // PEDESTRAINS: red
-    ledRedState1 = LOW;
-    ledGreenState1 = HIGH;
+    carRedLedState = LOW;
+    carGreenLedState = HIGH;
 
     // end of pedestrian semaphore flow
     pedestrianSemaphoreOn = false;
   } else if (elapsedTime - startChange > greenToRedPedestriansInterval) {
     // CARS: red
     // PEDESTRIANS: red
-    ledGreenState2 = LOW;
-    ledRedState2 = HIGH;
+    peopleGreenLedState = LOW;
+    peopleRedLedState = HIGH;
   } else if (elapsedTime - startChange > greenToIntermittentInterval) {
     // CARS: red
     // PEDESTRIANS: intermittent green  
     if (elapsedTime - lastChangedLed > intermittenInterval) {
-      ledGreenState2 = !ledGreenState2;
+      peopleGreenLedState = !peopleGreenLedState;
       lastChangedLed = millis();
     }
 
@@ -152,8 +141,8 @@ void pedestrianSemaphore() {
   } else if (elapsedTime - startChange > carsToPedestriansInterval) { 
     // CARS: red
     // PEDESTRIANS: green
-    ledRedState2 = LOW;
-    ledGreenState2 = HIGH;
+    peopleRedLedState = LOW;
+    peopleGreenLedState = HIGH;
 
     // making the buzzer emit a sound at a given interval
     if (elapsedTime - lastChangedBuzzer > buzzerDelayGreen) {
@@ -163,12 +152,12 @@ void pedestrianSemaphore() {
   } else if (elapsedTime - startChange > greenToRedCarsInterval) {
     // CARS: red
     // PEDESTRIANS: red
-    ledYellowState1 = LOW;
-    ledRedState1 = HIGH;
+    carYellowLedState = LOW;
+    carRedLedState = HIGH;
   } else if (elapsedTime - startChange > greenToYellowInterval) {
     // CARS: yellow 
     // PEDESTRIANS: red
-    ledGreenState1 = LOW;
-    ledYellowState1 = HIGH;
+    carGreenLedState = LOW;
+    carYellowLedState = HIGH;
   }
 }
