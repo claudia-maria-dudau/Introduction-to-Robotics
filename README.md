@@ -39,8 +39,8 @@ Each homework's description includes:
  The button is using the internal PULLUP resistor of the Atmega chip from the Arduino Uno board.
  
  <h3>Picture of setup</h3>
- <img src="https://user-images.githubusercontent.com/62221313/139659253-b8b25124-ab50-4733-bb05-f3310e908f34.jpeg"/>
+ <img src="https://user-images.githubusercontent.com/62221313/140087731-f16961db-40dc-4a86-bc8e-b742a7a918bb.jpeg"/>
 
  <h3>Video of the setup</h3>
- https://youtu.be/e4JgBUx1K0E
+ https://youtu.be/EJ2ZocBRfQg
 </details>
