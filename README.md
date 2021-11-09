@@ -44,3 +44,18 @@ Each homework's description includes:
  <h3>Video of the setup</h3>
  https://youtu.be/EJ2ZocBRfQg
 </details>
+
+## Homework 3 - EMF
+<details>
+ <h3>Requirements</h3>
+ An electro-magnetic field dedector which signals the level of the electro-magnetic field with a value in the [0..9] interval on a 7-segment dispaly and a specific sound emitted from a buzzer based on the intensity.
+ 
+ <h3>Implementation details</h3>
+ Every time, the antenna reads a sample set of a given size. The average value of each sample set is constrained to be in the [0..100] interval, which will later be mapped to values in the [0..9] interval, representing the digits displayed on the 7-segment dispaly.
+ 
+ <h3>Picture of setup</h3>
+ <img src="https://user-images.githubusercontent.com/62221313/140923468-88b12e32-0b09-4903-b21a-c19ebcb529b0.jpeg"/>
+
+ <h3>Video of the setup</h3>
+
+</details>
