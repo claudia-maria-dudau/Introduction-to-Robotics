@@ -54,8 +54,8 @@ Each homework's description includes:
  Every time, the antenna reads a sample set of a given size. The average value of each sample set is constrained to be in the [0..100] interval, which will later be mapped to values in the [0..9] interval, representing the digits displayed on the 7-segment dispaly.
  
  <h3>Picture of setup</h3>
- <img src="https://user-images.githubusercontent.com/62221313/140923468-88b12e32-0b09-4903-b21a-c19ebcb529b0.jpeg"/>
+ <img src="https://user-images.githubusercontent.com/62221313/141115195-361d3bf6-ea4c-43f6-9bc8-1d108d1319d9.jpeg"/>
 
  <h3>Video of the setup</h3>
- https://youtu.be/wH1ewhN4F3k
+ https://youtu.be/gPkKPk7LhYo
 </details>
