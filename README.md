@@ -59,3 +59,24 @@ Each homework's description includes:
  <h3>Video of the setup</h3>
  https://youtu.be/gPkKPk7LhYo
 </details>
+
+## Homework 4 - 4-DIGIT 7-SEGMENT DISPLAY
+<details>
+ <h3>Requirements</h3>
+ Setting the values on a 4-digit 7-segment display using a joystick. The display should be connected to a shift register 74hc595 and it should change between its two states on a button press. The values of the displayed digits are saved on the internal EEPROM of the Arduion Uno.
+ 
+  The system has the following states:
+  - <b>State 1</b> - use the joystick (Oy axis) to circle through the 4 digits (a blinking decimal point indicates the current digit)
+  - <b>State 2</b> - lock onto the current digit and use the joystick (Ox axis) to increment or decrement its value (the decimal point is always on)
+ 
+ <h3>Implementation details</h3>
+ The button is using the internal PULLUP resistor of the Atmega chip from the Arduino Uno board.
+ The EEPROM is updated after every loop, storing the values of the 4 digits and the position of the decimal point.
+ The Oy axis of the joystick is used to circle through the 4 displays, while the Ox axis is used to change the value of the selected display.
+ 
+ <h3>Picture of setup</h3>
+ <img src=""/>
+
+ <h3>Video of the setup</h3>
+
+</details>
