@@ -28,12 +28,13 @@ Each homework's description includes:
 <details>
  <h3>Requirements</h3>
  Building the traffic lights for a crosswalk using 2 LEDs to represent the traffic lights for pedestrians (red and green) and 3 LEDs to represent the traffic lights for cars (red, yellow and green). The pedestrian semaphore is activated by the button, which, once pressed, will start the flow of the system. However, pressing the button in any other state than the default one will cause no effect. There is a pause of one second between the change of semaphores.
- 
-  The system has the following states:
-  - <b>State 1</b> (default) - CARS: green, PEDESTRIANS: red + no sound, DURATION: indefinite
-  - <b>State 2</b> (10 seconds after a button press) - CARS: yellow, PEDESTRAINS: red + no sound, DURATION: 3 seconds
-  - <b>State 3</b> - CARS: red, PEDESTRAINS: green + sound at a constant interval, DURATION: 10 seconds
-  - <b>State 4</b> - CARS: red, PEDESTRIANS: intermittent green + sound at a faster constant interval, DURATION: 5 seconds
+ <br />
+ <br />
+  The system has the following states: <br />
+  - <b>State 1</b> (default) - CARS: green, PEDESTRIANS: red + no sound, DURATION: indefinite <br />
+  - <b>State 2</b> (10 seconds after a button press) - CARS: yellow, PEDESTRAINS: red + no sound, DURATION: 3 seconds <br />
+  - <b>State 3</b> - CARS: red, PEDESTRAINS: green + sound at a constant interval, DURATION: 10 seconds <br />
+  - <b>State 4</b> - CARS: red, PEDESTRIANS: intermittent green + sound at a faster constant interval, DURATION: 5 seconds <br />
  
  <h3>Implementation details</h3>
  The button is using the internal PULLUP resistor of the Atmega chip from the Arduino Uno board.
@@ -64,15 +65,18 @@ Each homework's description includes:
 <details>
  <h3>Requirements</h3>
  Setting the values on a 4-digit 7-segment display using a joystick. The display should be connected to a shift register 74hc595 and it should change between its two states on a button press. The values of the displayed digits are saved on the internal EEPROM of the Arduion Uno.
- 
-  The system has the following states:
-  - <b>State 1</b> - use the joystick (Oy axis) to circle through the 4 digits (a blinking decimal point indicates the current digit)
-  - <b>State 2</b> - lock onto the current digit and use the joystick (Ox axis) to increment or decrement its value (the decimal point is always on)
+ <br />
+ <br />
+  The system has the following states: <br />
+  - <b>State 1</b> - use the joystick (Oy axis) to circle through the 4 digits (a blinking decimal point indicates the current digit) <br />
+  - <b>State 2</b> - lock onto the current digit and use the joystick (Ox axis) to increment or decrement its value (the decimal point is always on) <br />
  
  <h3>Implementation details</h3>
- The button is using the internal PULLUP resistor of the Atmega chip from the Arduino Uno board.
- The EEPROM is updated after every loop, storing the values of the 4 digits and the position of the decimal point.
- The Oy axis of the joystick is used to circle through the 4 displays, while the Ox axis is used to change the value of the selected display.
+ The button is using the internal PULLUP resistor of the Atmega chip from the Arduino Uno board. 
+ <br />
+ The EEPROM is updated after every loop, storing the values of the 4 digits and the position of the decimal point. 
+ <br />
+ The Oy axis of the joystick is used to circle through the 4 displays, while the Ox axis is used to change the value of the selected display. 
  
  <h3>Picture of setup</h3>
  <img src=""/>
