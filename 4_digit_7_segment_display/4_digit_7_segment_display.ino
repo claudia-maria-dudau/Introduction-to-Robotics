@@ -1,11 +1,8 @@
 #include<EEPROM.h>
 
 // shift register
-// ST_CP
 const int latchPin = 11;
-// SH_CP
 const int clockPin = 10;
-// DS
 const int dataPin = 12;
 
 // 4-digit 7-segment display
@@ -118,18 +115,17 @@ void toggle() {
 // showing all digits on the 4 displays
 void showDisplays() {
   for (int i = 0; i < displayCount; i++) {
-      showDisplay(i);
+    showDisplay(i);
+    delay(5);
 
-      if (i == currentDisplay) {
-        // decimal point to indicate the current selected display
-        showDecimalPoint();
-      } else {
-        // no decimal point for the other displays
-        writeReg(digitArray[digitOnDisplay[i]]);
-      }
-      
-      delay(5);
+    if (i == currentDisplay) {
+      // decimal point to indicate the current selected display
+      showDecimalPoint();
+    } else {
+      // no decimal point for the other displays
+      writeReg(digitArray[digitOnDisplay[i]]);
     }
+  }
 }
 
 // showing the decimal point on the selected display
