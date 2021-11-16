@@ -12,9 +12,7 @@ const int segD3 = 5;
 const int segD4 = 4;
 
 const int displayCount = 4;
-int displayDigits[] = {
-  segD1, segD2, segD3, segD4
-};
+int displays[displayCount] = { segD1, segD2, segD3, segD4 };
 int currentDisplay = 0;
 
 // joystick
@@ -69,8 +67,7 @@ void setup() {
 
   // display pins are in OUTPUT mode
   for (int i = 0; i < displayCount; i++) {
-    pinMode(displayDigits[i], OUTPUT);
-    digitalWrite(displayDigits[i], LOW);
+    pinMode(displays[i], OUTPUT);
   }
 
   // joystick pins are in INPUT mode
@@ -116,7 +113,6 @@ void toggle() {
 void showDisplays() {
   for (int i = 0; i < displayCount; i++) {
     showDisplay(i);
-    delay(5);
 
     if (i == currentDisplay) {
       // decimal point to indicate the current selected display
@@ -163,13 +159,15 @@ void writeReg(int digit) {
 
 // activating only one of the 4 displays
 void showDisplay(int displayNumber) {
+  // writing on the desired display
+  digitalWrite(displays[displayNumber], LOW);
+
+  delay(3);
+
   // shutting off all displays
   for (int i = 0; i < displayCount; i++) {
-    digitalWrite(displayDigits[i], HIGH);
+    digitalWrite(displays[i], HIGH);
   }
-
-  // writing on the desired display
-  digitalWrite(displayDigits[displayNumber], LOW);
 }
 
 // changing the digit on one of the displays
