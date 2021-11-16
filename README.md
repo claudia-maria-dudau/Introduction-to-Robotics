@@ -79,8 +79,8 @@ Each homework's description includes:
  The Oy axis of the joystick is used to circle through the 4 displays, while the Ox axis is used to change the value of the selected display. 
  
  <h3>Picture of setup</h3>
- <img src=""/>
+ <img src="https://user-images.githubusercontent.com/62221313/141986265-a13b389b-4531-4f52-8757-a9dbfa15553c.jpeg"/>
 
  <h3>Video of the setup</h3>
-
+ https://youtu.be/NbIfmaKqEIo
 </details>
