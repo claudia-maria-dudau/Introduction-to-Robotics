@@ -42,7 +42,7 @@ int displayAddress[displayCount] = { 0, 1, 2, 3 };
 int currentDisplayAddress = 4;
 
 // states of the button press
-bool changingDigit = false;
+volatile bool changingDigit = false;
 
 // joystick position
 int xValue = 0;
@@ -52,7 +52,7 @@ const int minThreshold = 400;
 const int maxThreshold = 600;
 
 // blinking display
-unsigned long lastChanged = 0;
+volatile unsigned long lastChanged = 0;
 const int blinkingInterval = 200;
 bool dpState = LOW;
 
