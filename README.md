@@ -21,7 +21,7 @@ Each homework's description includes:
  <img src="https://user-images.githubusercontent.com/62221313/138556269-8d553af0-0ee4-4f4f-acb8-1238998de5c3.jpeg"/>
 
  <h3>Video of the setup</h3>
- https://youtu.be/SxzImC9lBV8
+ <a href="https://youtu.be/SxzImC9lBV8" target="_blank">Video</a>
 </details>
 
 ## Homework 2 - CROSSWALK
@@ -43,7 +43,7 @@ Each homework's description includes:
  <img src="https://user-images.githubusercontent.com/62221313/140087731-f16961db-40dc-4a86-bc8e-b742a7a918bb.jpeg"/>
 
  <h3>Video of the setup</h3>
- https://youtu.be/EJ2ZocBRfQg
+ <a href="https://youtu.be/EJ2ZocBRfQg" target="_blank">Video</a>
 </details>
 
 ## Homework 3 - EMF
@@ -58,7 +58,7 @@ Each homework's description includes:
  <img src="https://user-images.githubusercontent.com/62221313/141115195-361d3bf6-ea4c-43f6-9bc8-1d108d1319d9.jpeg"/>
 
  <h3>Video of the setup</h3>
- https://youtu.be/gPkKPk7LhYo
+ <a href="https://youtu.be/gPkKPk7LhYo" target="_blank">Video</a>
 </details>
 
 ## Homework 4 - 4-DIGIT 7-SEGMENT DISPLAY
@@ -82,5 +82,5 @@ Each homework's description includes:
  <img src="https://user-images.githubusercontent.com/62221313/141986265-a13b389b-4531-4f52-8757-a9dbfa15553c.jpeg"/>
 
  <h3>Video of the setup</h3>
- https://youtu.be/NbIfmaKqEIo
+ <a href="https://youtu.be/NbIfmaKqEIo" target="_blank">Video</a>
 </details>
