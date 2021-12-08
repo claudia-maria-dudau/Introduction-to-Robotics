@@ -18,7 +18,7 @@ Each homework's description includes:
  Since the values read from each potentiometer are in the interval [0..1023], they need to be mapped to the accepted values by each led which are in the interval [0..255].
 
  <h3>Picture of setup</h3>
- <img src="https://user-images.githubusercontent.com/62221313/138556269-8d553af0-0ee4-4f4f-acb8-1238998de5c3.jpeg"/>
+ <img src="https://user-images.githubusercontent.com/62221313/138556269-8d553af0-0ee4-4f4f-acb8-1238998de5c3.jpeg" width="400" height="400"/>
 
  <h3>Video of the setup</h3>
  <a href="https://youtu.be/SxzImC9lBV8" target="_blank">Video</a>
@@ -40,7 +40,7 @@ Each homework's description includes:
  The button is using the internal PULLUP resistor of the Atmega chip from the Arduino Uno board.
  
  <h3>Picture of setup</h3>
- <img src="https://user-images.githubusercontent.com/62221313/140087731-f16961db-40dc-4a86-bc8e-b742a7a918bb.jpeg"/>
+ <img src="https://user-images.githubusercontent.com/62221313/140087731-f16961db-40dc-4a86-bc8e-b742a7a918bb.jpeg" width="400" height="400"/>
 
  <h3>Video of the setup</h3>
  <a href="https://youtu.be/EJ2ZocBRfQg" target="_blank">Video</a>
@@ -55,7 +55,7 @@ Each homework's description includes:
  Every time, the antenna reads a sample set of a given size. The average value of each sample set is constrained to be in the [0..100] interval, which will later be mapped to values in the [0..9] interval, representing the digits displayed on the 7-segment dispaly.
  
  <h3>Picture of setup</h3>
- <img src="https://user-images.githubusercontent.com/62221313/141115195-361d3bf6-ea4c-43f6-9bc8-1d108d1319d9.jpeg"/>
+ <img src="https://user-images.githubusercontent.com/62221313/141115195-361d3bf6-ea4c-43f6-9bc8-1d108d1319d9.jpeg" width="400" height="400"/>
 
  <h3>Video of the setup</h3>
  <a href="https://youtu.be/gPkKPk7LhYo" target="_blank">Video</a>
@@ -79,7 +79,7 @@ Each homework's description includes:
  The Oy axis of the joystick is used to circle through the 4 displays, while the Ox axis is used to change the value of the selected display. 
  
  <h3>Picture of setup</h3>
- <img src="https://user-images.githubusercontent.com/62221313/141986265-a13b389b-4531-4f52-8757-a9dbfa15553c.jpeg"/>
+ <img src="https://user-images.githubusercontent.com/62221313/141986265-a13b389b-4531-4f52-8757-a9dbfa15553c.jpeg" width="400" height="400"/>
 
  <h3>Video of the setup</h3>
  <a href="https://youtu.be/NbIfmaKqEIo" target="_blank">Video</a>
